@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techhive - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="img/icon.png">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-yellow: #ffd700;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            padding-top: 0;
+            background-color: #1e3a8a; /* Background biru */
+        }
+
+        .navbar {
+            background-color: var(--primary-blue);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.sticky-top {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-yellow);
+        }
+
+        .btn-kontak {
+            background-color: var(--primary-yellow);
+            color: #000;
+            padding: 0.5rem 2rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-kontak:hover {
+            background-color: #e6c200;
+            color: #000;
+        }
+
+        .hero-section {
+            background-image: url("img/heroproduk2.png");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(30, 58, 138, 0.5); /* var(--primary-blue) with 80% opacity */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .portfolio-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+
+        .portfolio-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 2rem;
+        }
+
+        .portfolio-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .portfolio-item {
+            flex: 0 0 50%;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .portfolio-content {
+            flex: 0 0 50%;
+            padding: 2rem;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-content h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .portfolio-content p {
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-row {
+                flex-direction: column !important;
+            }
+
+            .portfolio-item,
+            .portfolio-content {
+                flex: 0 0 100%;
+            }
+        }
+
+        .cta-section {
+            background-color: var(--primary-yellow);
+            position: relative;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .btn-cta {
+            background-color: var(--primary-blue);
+            color: #fff;
+            padding: 0.75rem 2.5rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            background-color: #152c69;
+            color: #fff;
+        }
+
+        .footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .footer h5 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: var(--primary-yellow);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="img/Techhive.png" alt="Techiiive" width="120" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produk1.html">Development</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produk2.html">IT Sourching</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portofolio.html">Portofolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Tentang</a>
+                    </li>
+                    <li class="nav-item mt-2 mt-lg-0 ms-lg-3">
+                        <a class="btn btn-kontak w-100" href="kontak.html">kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-content">
+                <h1>Projek Terpilih.</h1>
+                <p>Kualitas adalah segalanya</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h2><span class="counter" data-target="100">0</span>+</h2>
+                        <p>Modul</p>
+                    </div>
+                    <div class="stat-item">
+                        <h2><span class="counter" data-target="100">0</span>+</h2>
+                        <p>Pengguna</p>
+                    </div>
+                    <div class="stat-item">
+                        <h2><span class="counter" data-target="10">0</span>+</h2>
+                        <p>Perusahaan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Grid -->
+        <section class="container">
+            <div class="portfolio-grid">
+                <!-- First Row -->
+                <div class="portfolio-row">
+                    <div class="portfolio-item">
+                        <img src="img/Leap.png" alt="Leap" width="300" height="200">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Leap</h3>
+                        <h4>Aplikasi Pembelajaran Terintegrasi</h4>
+                        <p>Aplikasi</p>
+                    </div>
+                </div>
+
+                <!-- Second Row -->
+                <div class="portfolio-row">
+                    <div class="portfolio-item">
+                        <img src="img/digitaledge.png" alt="Digital Edge I2C" width="300" height="200">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Digital Edge I2C</h3>
+                        <h4>Implementasi Odoo, Portal Pelanggan</h4>
+                        <p>Situs Web</p>
+                    </div>
+                </div>
+
+                <!-- Third Row -->
+                <div class="portfolio-row">
+                    <div class="portfolio-item">
+                        <img src="img/moneyspace.png" alt="Money Space" width="300" height="200">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Money Space</h3>
+                        <h4>Sistem manajemen dokumen, Plugin</h4>
+                        <p>Aplikasi</p>
+                    </div>
+                </div>
+
+                <!-- Fourth Row -->
+                <div class="portfolio-row">
+                    <div class="portfolio-item">
+                        <img src="img/idl.png" alt="ID Logistics" width="300" height="200">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>ID Logistics</h3>
+                        <h4>Implementasi Odoo</h4>
+                        <p>Situs Web</p>
+                    </div>
+                </div>
+
+                <!-- Fifth Row -->
+                <div class="portfolio-row">
+                    <div class="portfolio-item">
+                        <img src="img/realfood.png" alt="Realfood" width="300" height="200">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Realfood</h3>
+                        <h4>Implementasi Odoo</h4>
+                        <p>Situs Web, Aplikasi</p>
+                    </div>
+                </div>
+
+                <!-- Sixth Row -->
+                <div class="portfolio-row">
+                    <div class="portfolio-item">
+                        <img src="img/qasir.png" alt="Qasir" width="300" height="200">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Qasir</h3>
+                        <h4>Implementasi Odoo</h4>
+                        <p>Situs Web, Aplikasi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section py-5">
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-md-8">
+                        <h2 class="text-dark mb-3">Percakapan yang Baik Membawa pada Mitra yang Berkembang.</h2>
+                        <p class="text-dark mb-0">Mari Berbicara dan Memulai</p>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <a href="kontak.html" class="btn btn-cta btn-lg">Mulai Sekarang!</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <p class="mb-1">Jl. Margorejo Indah XV/C-814</p>
+                    <p class="mb-1">Surabaya, Jawa Timur, 60238</p>
+                    <p class="mb-1">+62 811-3057-1746 (WhatsApp)</p>
+                    <a href="/cdn-cgi/l/email-protection#582b39343d2b18362d2a372b373e2c76313c" class="text-yellow text-decoration-none"><span class="__cf_email__" data-cfemail="3b485a575e487b554e495448545d4f15525f">[email&#160;protected]</span></a>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-6 mb-4 mb-md-0">
+                            <h5>Beranda</h5>
+                            <ul>
+                                <li><a href="#">IT Outsourcing</a></li>
+                                <li><a href="portofolio.html">Portofolio</a></li>
+                                <li><a href="#">Development</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <h5>Informasi</h5>
+                            <ul>
+                                <li><a href="#">Kontak</a></li>
+                                <li><a href="index.html">Tentang</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-white-50">
+                        Kebanyakan bisnis kekurangan waktu dan keahlian untuk membangun perangkat lunak yang andal. 
+                        Di Nurosoft kami akan membangun perangkat lunak kelas dunia dengan tarif terjangkau sehingga 
+                        Anda dapat fokus pada mengembangkan bisnis Anda.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Counter animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+
+                // Lower inc to slow and higher to slow
+                const inc = target / speed;
+
+                // Check if target is reached
+                if (count < target) {
+                    // Add inc to count and output in counter
+                    counter.innerText = Math.ceil(count + inc);
+                    // Call function every ms
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            updateCount();
+        });
+    </script>
+</body>
+</html>

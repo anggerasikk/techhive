@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techiiive - Software Development</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="img/icon.png">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-yellow: #ffd700;
+            --light-gray: #f0f0f0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            padding-top: 0;
+        }
+
+        .navbar {
+            background-color: var(--primary-blue);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-yellow);
+        }
+
+        .btn-kontak {
+            background-color: var(--primary-yellow);
+            color: #000;
+            padding: 0.5rem 2rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-kontak:hover {
+            background-color: #e6c200;
+            color: #000;
+        }
+
+        .hero {
+            position: relative;
+            min-height: calc(100vh - 76px);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('oursource.webp');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--primary-blue);
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-cta {
+            background-color: var(--primary-yellow);
+            color: #000;
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            background-color: #e6c200;
+            color: #000;
+        }
+
+        .partners, .clients {
+            background-color: var(--light-gray);
+        }
+
+        .partners img,
+        .clients img {
+            max-height: 60px;
+            width: auto;
+            object-fit: contain;
+            transition: filter 0.3s ease;
+        }
+        .logo-wrapper {
+            padding: 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        
+        .testimonial-section {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            color: #444;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .testimonial-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-track {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 1rem 0;
+        }
+
+        .testimonial-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-card {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 600px;
+            background-color: #e8f4ff;
+            padding: 3rem;
+            border-radius: 1rem;
+            scroll-snap-align: start;
+        }
+
+        .testimonial-content {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: #000;
+        }
+
+        .author-title {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .scroll-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .scroll-button {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-button:hover {
+            background-color: #f5f5f5;
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-card {
+                max-width: 90vw;
+            }
+        }
+
+        .stats {
+            background-color: var(--primary-yellow);
+        }
+
+        .stat-item h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .comparison {
+            background-color: #f8f9fa;
+        }
+
+        .solution-box {
+            background-color: #fff9c4;
+            padding: 2rem;
+            border-radius: 12px;
+            height: 100%;
+        }
+
+        .problem-item,
+        .solution-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .process-section {
+            background-color: var(--light-gray);
+        }
+
+        .process-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background-color: #e6f0ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon-wrapper svg {
+            stroke: #0066ff;
+        }
+
+        .cta-section {
+            background-color: var(--primary-yellow);
+        }
+
+        .footer {
+            background-color: var(--primary-blue);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer a:hover {
+            color: var(--primary-yellow) !important;
+        }
+
+        .text-yellow {
+            color: var(--primary-yellow) !important;
+        }
+
+        .hover-warning:hover {
+        color: #ffd700 !important;
+        }
+        
+        .footer a:hover {
+            color: #ffd700 !important;
+        }
+        
+        .cta-section {
+            background-color: #ffd700;
+        }
+        
+        .footer {
+            background-color: #1e3a8a;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background-color: var(--primary-blue);
+                padding: 1rem;
+                border-radius: 8px;
+                margin-top: 1rem;
+            }
+
+            .nav-item {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .partners img,
+            .clients img {
+                max-height: 40px;
+            }
+
+            .stat-item h2 {
+                font-size: 2.5rem;
+            }
+
+            .process-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="img/Techhive.png" alt="Techiiive" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produk1.html">Development</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">IT Sourching</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portofolio.html">Portofolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Tentang</a>
+                    </li>
+                    <li class="nav-item mt-2 mt-lg-0 ms-lg-3">
+                        <a class="btn btn-kontak w-100" href="kontak.html">kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero position-relative overflow-hidden">
+        <div class="container">
+            <div class="row min-vh-75 align-items-center py-5">
+                <div class="col-lg-8 position-relative z-1">
+                    <p class="text-primary mb-3">aplikasi seluler - aplikas web - outsourcing IT</p>
+                    <h1 class="display-4 fw-bold mb-4">
+                        Layanan Pengembangan<br>
+                        Perangkat Lunak yang<br>
+                        Terpercaya
+                    </h1>
+                    <a href="kontak.html" class="btn btn-cta d-inline-flex align-items-center gap-2">
+                        Jadwalkan Panggilan
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    
+                    <div class="certifications mt-5 d-flex gap-4">
+                        <img src="img/bsi.png" alt="BSI ISO 9001" height="120">
+                        <img src="img/bsi2.png" alt="BSI ISO/IEC 27001" height="120">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="decoration"></div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners py-5">
+        <div class="container">
+            <div class="row align-items-center justify-content-center g-4">
+                <div class="col-6 col-md-2">
+                    <h2>Mitra Kami</h2>
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="img/odoo.png" alt="Odoo" class="img-fluid">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="img/alibaba.webp" alt="Alibaba Cloud" class="img-fluid">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="img/rhino.webp" alt="Rhino" class="img-fluid">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="img/mekari (1).png" alt="Mekari" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats py-5">
+        <div class="container text-center">
+            <p class="lead mb-5">
+                Kami memahami kekecewaan dari proyek perangkat lunak yang gagal.<br>
+                Itulah mengapa selama sembilan tahun terakhir, kami telah membantu<br>
+                klien seperti Anda membangun solusi perangkat lunak yang handal.
+            </p>
+
+            <div class="row g-4">
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <h2>+<span class="counter" data-target="10">0</span></h2>
+                        <p>Tahun<br>Pengalaman</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <h2>+<span class="counter" data-target="100">0</span></h2>
+                        <p>Proyek yang<br>Memuaskan Telah<br>Dikerjakan</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <h2>+<span class="counter" data-target="75">0</span></h2>
+                        <p>Talenta<br>Teknologi<br>Terbaik</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item">
+                        <h2><span class="counter" data-target="95">0</span><span>%</span></h2>
+                        <p>Tingkat retensi<br>pelanggan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Section -->
+    <section class="clients py-5">
+        <div class="container text-center">
+            <p class="lead mb-5">
+                Kami telah mendukung perusahaan-perusahaan terkemuka<br>
+                di 9 negara termasuk Jepang, Korea Selatan, Hong Kong,<br>
+                Thailand, Australia, India, Malaysia, Singapura, dan<br>
+                Indonesia di berbagai industri seperti pertambangan,<br>
+                logistik, pendidikan, e-commerce, manufaktur, pusat data,<br>
+                dan banyak lagi.
+            </p>
+        </div>
+    </section>
+    <!-- Client Logos Section -->
+    <section class="client-logos py-5">
+        <div class="container">
+            <div class="row g-4 justify-content-center align-items-center">
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="logo-wrapper">
+                        <img src="img/digitaledge.png" alt="Digital Edge" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="logo-wrapper">
+                        <img src="img/paxel.png" alt="Paxel" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="logo-wrapper">
+                        <img src="img/realfood.png" alt="Realfood" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="logo-wrapper">
+                        <img src="img/kpc.png" alt="KPC" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="logo-wrapper">
+                        <img src="img/metron.png" alt="Metron" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="logo-wrapper">
+                        <img src="img/moneyspace.png" alt="Money Space" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 justify-content-center align-items-center mt-4">
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="logo-wrapper">
+                        <img src="img/qasir.png" alt="Qasir" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="logo-wrapper">
+                        <img src="img/idl.png" alt="ID Logistics" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="logo-wrapper">
+                        <img src="img/senwell.png" alt="Senwell" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="logo-wrapper">
+                        <img src="img/kagome.png" alt="Kagome" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="logo-wrapper">
+                        <img src="img/Leap.png" alt="Leap" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="logo-wrapper">
+                        <img src="img/easymart.png" alt="Easymart" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h3 class="mb-4">Pernahkah Anda merasa frustrasi dengan rumah perangkat lunak yang</h3>
+                    <div class="problem-list">
+                        <div class="problem-item">
+                            <span class="icon">❌</span>
+                            <p>menjanjikan jadwal proyek yang berlebihan, mengubah bulan menjadi tahun?</p>
+                        </div>
+                        <div class="problem-item">
+                            <span class="icon">❌</span>
+                            <p>Terus mengatasi bug yang sama tanpa perbaikan permanen?</p>
+                        </div>
+                        <div class="problem-item">
+                            <span class="icon">❌</span>
+                            <p>Tidak responsif terhadap kebutuhan Anda?</p>
+                        </div>
+                        <div class="problem-item">
+                            <span class="icon">❌</span>
+                            <p>Tidak dapat memahami tujuan bisnis Anda?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="solution-box">
+                        <h3 class="mb-4">Akhiri siklus pengalaman yang mengecewakan dengan rumah perangkat lunak. Dengan Techhive, Anda akan menemukan</h3>
+                        <div class="solution-list">
+                            <div class="solution-item">
+                                <span class="icon">✅</span>
+                                <p>mitra terpercaya yang secara konsisten menyampaikan proyek perangkat lunak berkualitas tinggi</p>
+                            </div>
+                            <div class="solution-item">
+                                <span class="icon">✅</span>
+                                <p>Pengiriman proyek yang andal, memastikan jadwal tepat waktu dengan risiko minimal</p>
+                            </div>
+                            <div class="solution-item">
+                                <span class="icon">✅</span>
+                                <p>Keahlian dalam aspek teknis dan fungsional</p>
+                            </div>
+                            <div class="solution-item">
+                                <span class="icon">✅</span>
+                                <p>Tim dukungan pelanggan yang berdedikasi untuk layanan cepat dan berkualitas</p>
+                            </div>
+                        </div>
+                        <a href="kontak.html" class="btn btn-cta mt-4">Mulai Sekarang!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="testimonial-section">
+        <div class="section-header">
+            <h3 class="section-title">Testimoni</h3>
+            <h2 class="section-subtitle">Lihat mengapa Techhive adalah pilihan terbaik</h2>
+            <p class="section-description">
+                Techhive telah melayani pelanggan kami selama lebih dari 9 tahun dan lebih dari 50 pelanggan kami puas dengan layanan kami, dan ini adalah testimoni yang kami terima dari beberapa klien yang telah bekerja sama dengan kami.
+            </p>
+        </div>
+
+        <div class="testimonial-container">
+            <div class="testimonial-track" id="testimonialTrack">
+                <div class="testimonial-card">
+                    <p class="testimonial-content">
+                        "Aplikasi Leapverse memberikan kontribusi yang signifikan dalam meningkatkan efisiensi operasional perusahaan kami. Bersama Nurosoft, kami akhirnya memiliki aplikasi internal yang disesuaikan dengan kebutuhan lembaga. Kami merasa sangat puas dan gembira bekerja sama dengan Nurosoft, karena profesionalitas yang mereka tunjukkan."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="img/tes1.png" alt="Ika Asriani Yadin" class="author-image">
+                        <div class="author-info">
+                            <span class="author-name">Ika Asriani Yadin</span>
+                            <span class="author-title">Direktur LEAP English & Digital Class</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-content">
+                        "Techhive telah membantu kami mengembangkan sistem yang sangat efektif untuk operasional kami. Tim mereka sangat profesional dan responsif terhadap kebutuhan kami."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="img/tes2.png" alt="John Doe" class="author-image">
+                        <div class="author-info">
+                            <span class="author-name">John Doe</span>
+                            <span class="author-title">CEO, Tech Solutions</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-content">
+                        "Kerjasama dengan Techhive memberikan hasil yang luar biasa. Mereka tidak hanya memberikan solusi teknis tetapi juga pemahaman mendalam tentang kebutuhan bisnis kami."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="img/tes3.png" alt="Jane Smith" class="author-image">
+                        <div class="author-info">
+                            <span class="author-name">Jane Smith</span>
+                            <span class="author-title">CTO, Digital Innovations</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    <!-- Process Section -->
+    <section class="process-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <p class="process-label">Proses</p>
+                    <h2 class="process-title mb-4">Bagaimana cara kerjanya</h2>
+                    <button class="btn btn-yellow d-flex align-items-center">
+                        Pelajari Lebih Lanjut
+                        <svg class="ms-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14m-7-7l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Process Cards -->
+                <div class="col-md-9">
+                    <div class="row g-4">
+                        <!-- Card 1 -->
+                        <div class="col-md-4">
+                            <div class="process-card">
+                                <h3>Menilai</h3>
+                                <div class="icon-wrapper">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    </svg>
+                                </div>
+                                <p>Bertemu dengan para ahli Techhive agar kami dapat menilai kebutuhan bisnis Anda dan menyajikan proposal serta jadwal</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 2 -->
+                        <div class="col-md-4">
+                            <div class="process-card">
+                                <h3>Bangun</h3>
+                                <div class="icon-wrapper">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                        <line x1="8" y1="18" x2="8" y2="12"></line>
+                                        <line x1="12" y1="18" x2="12" y2="8"></line>
+                                        <line x1="16" y1="18" x2="16" y2="14"></line>
+                                    </svg>
+                                </div>
+                                <p>Kami mendukung Anda di mana pun Anda membutuhkan kami, baik itu manajemen proyek, pengumpulan kebutuhan, pengembangan perangkat lunak, atau pengujian</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 3 -->
+                        <div class="col-md-4">
+                            <div class="process-card">
+                                <h3>Luncurkan</h3>
+                                <div class="icon-wrapper">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                                        <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                                    </svg>
+                                </div>
+                                <p>Luncurkan aplikasi perangkat lunak modern dan andal yang mencapai tujuan bisnis Anda</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- CTA Section -->
+    <section class="cta-section py-5" style="background-color: #ffd700;">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-md-8">
+                    <h2 class="mb-3 text-dark">Percakapan yang Baik Membawa pada Mitra yang Berkembang.</h2>
+                    <p class="mb-0 text-dark">Mari Berbicara dan Memulai</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <a href="kontak.html" class="btn btn-lg text-white px-4" style="background-color: #1e3a8a;">Mulai Sekarang!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5" style="background-color: #1e3a8a;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <p class="text-white mb-1">Jl. Margorejo Indah XV/C-814</p>
+                    <p class="text-white mb-1">Surabaya, Jawa Timur, 60238</p>
+                    <p class="text-white mb-1">+62 811-3057-1746 (WhatsApp)</p>
+                    <a href="mailto:sales@techhive.id" class="text-warning text-decoration-none">sales@techhive.id</a>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white mb-3">Beranda</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="produk2.html" class="text-white text-decoration-none hover-warning">IT Outsourcing</a></li>
+                        <li class="mb-2"><a href="portofolio.html" class="text-white text-decoration-none hover-warning">Portofolio</a></li>
+                        <li class="mb-2"><a href="produk1.html" class="text-white text-decoration-none hover-warning">Development</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white mb-3">Informasi</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="kontak.html" class="text-white text-decoration-none hover-warning">Kontak</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-white text-decoration-none hover-warning">Tentang</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <p class="text-white-50">
+                        Kebanyakan bisnis kekurangan waktu dan keahlian untuk membangun perangkat lunak yang andal. 
+                        Di Techhive kami akan membangun perangkat lunak kelas dunia dengan tarif terjangkau sehingga 
+                        Anda dapat fokus pada mengembangkan bisnis Anda.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200; // Animation duration in milliseconds
+            
+            const startCounting = (element) => {
+                const target = parseInt(element.getAttribute('data-target'));
+                let count = 0;
+                
+                const updateCount = () => {
+                    const increment = target / (speed / 10); // Increment size
+                    
+                    if (count < target) {
+                        count = Math.min(count + increment, target);
+                        element.innerText = Math.floor(count);
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        element.innerText = target;
+                    }
+                };
+                
+                updateCount();
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startCounting(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        });
+
+        // Optional: Add touch scroll support
+        const track = document.getElementById('testimonialTrack');
+        let startX;
+        let scrollLeft;
+
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].pageX - track.offsetLeft;
+            scrollLeft = track.scrollLeft;
+        });
+
+        track.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const x = e.touches[0].pageX - track.offsetLeft;
+            const walk = (x - startX) * 2;
+            track.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>
+

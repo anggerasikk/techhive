@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techhive - About Techhive</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="img/icon.png">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-yellow: #ffd700;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            padding-top: 0;
+        }
+
+        .navbar {
+            background-color: var(--primary-blue);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.sticky-top {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-yellow);
+        }
+
+        .btn-kontak {
+            background-color: var(--primary-yellow);
+            color: #000;
+            padding: 0.5rem 2rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-kontak:hover {
+            background-color: #e6c200;
+            color: #000;
+        }
+
+        .hero-section {
+            background: url("img/heroabout.png") no-repeat center center/cover;
+            color: #000;
+            text-align: center;
+            padding: 5rem 1rem;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-section h1, .hero-section p {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .image-section {
+            margin: 5rem 0;
+        }
+        .image-section img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            padding: 5px;
+            transition: transform 0.3s ease;
+        }
+        .image-section img:hover {
+            transform: scale(1.05);
+        }
+
+        .cta-section {
+            background-color: var(--primary-yellow);
+            position: relative;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .btn-cta {
+            background-color: var(--primary-blue);
+            color: #fff;
+            padding: 0.75rem 2.5rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            background-color: #152c69;
+            color: #fff;
+        }
+
+       .partners-section {
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .partners-box {
+            background-color: #f3f4f6;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .partners-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .partner-logo {
+            max-height: 30px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        .stats-box {
+            background-color: #ffd700;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .stats-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #000;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #000;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .partner-logo {
+                max-height: 25px;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            
+            .stat-label {
+                font-size: 0.9rem;
+            }
+        }
+
+        .footer {
+            background-color: var(--primary-blue);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a {
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--primary-yellow) !important;
+        }
+
+        .text-yellow {
+            color: var(--primary-yellow) !important;
+        }
+
+        .text-white-50 {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        /* New styles for Values Section */
+        .values-section {
+            background-color: #f8f9fa;
+            padding: 4rem 0;
+        }
+
+        .values-section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+        }
+
+        .value-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-letter {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .value-text {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .values-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .value-card {
+                padding: 1.5rem;
+            }
+        }
+                /* Team Section Styles */
+        .team-section {
+            background-color: var(--primary-yellow);
+            padding: 4rem 0;
+        }
+
+        .team-subtitle {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 3rem;
+        }
+
+        .team-member {
+            margin-bottom: 2rem;
+        }
+
+        .member-image {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-position {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .member-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .team-title {
+                font-size: 1.75rem;
+            }
+            
+            /* Trusted Companies Section Styles */
+            .trusted-companies-section {
+                background-color: #fff;
+            }
+
+            .trusted-title {
+                font-size: 2rem;
+                font-weight: 600;
+                color: #000;
+                line-height: 1.3;
+                margin-bottom: 1.5rem;
+            }
+
+            .btn-portfolio {
+                background-color: var(--primary-blue);
+                color: #fff;
+                padding: 0.75rem 1.5rem;
+                border-radius: 4px;
+                display: inline-flex;
+                align-items: center;
+                transition: background-color 0.3s ease;
+                border: none;
+                font-weight: 500;
+            }
+
+            .btn-portfolio:hover {
+                background-color: #152c69;
+                color: #fff;
+            }
+
+            .btn-portfolio svg {
+                transition: transform 0.3s ease;
+            }
+
+            .btn-portfolio:hover svg {
+                transform: translateX(5px);
+            }
+
+            .trusted-logos {
+                margin-top: 3rem;
+            }
+
+            .trusted-logos img {
+                max-height: 60px;
+                width: auto;
+                filter: grayscale(100%);
+                opacity: 0.7;
+                transition: all 0.3s ease;
+            }
+
+            .trusted-logos img:hover {
+                filter: grayscale(0);
+                opacity: 1;
+            }
+
+            @media (max-width: 768px) {
+                .trusted-title {
+                    font-size: 1.5rem;
+                }
+                
+                .trusted-logos img {
+                    max-height: 45px;
+                }
+            }
+
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="img/Techhive.png" alt="Techiiive" width="120" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produk1.html">Development</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produk2.html">IT Sourching</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portofolio.html">Portofolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Tentang</a>
+                    </li>
+                    <li class="nav-item mt-2 mt-lg-0 ms-lg-3">
+                        <a class="btn btn-kontak w-100" href="kontak.html">kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Pelajari Lebih Lanjut Tentang Kami</h1>
+            <p>Dari Mana Kami Berasal, Kemana Kami Akan Menuju</p>
+        </div>
+    </section>
+
+    <!-- Image Section -->
+    <section class="image-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <img src="img/3.png" alt="Image 1" class="img-fluid rounded" width="200" height="200">
+                </div>
+                <div class="col-md-3">
+                    <img src="img/4.png" alt="Image 2" class="img-fluid rounded" width="200" height="200">
+                </div>
+                <div class="col-md-3">
+                    <img src="img/5.png" alt="Image 3" class="img-fluid rounded" width="200" height="200">
+                </div>
+                <div class="col-md-3">
+                    <img src="img/6.png" alt="Image 4" class="img-fluid rounded" width="200" height="200">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <p>Sejarah Techhive dimulai pada tahun 2014, saat Kern Nuroho meninggalkan pekerjaannya di sebuah firma konsultasi TI besar di Seattle untuk kembali ke Indonesia. Dengan dorongan dari Singgih Nuroho, ayahnya dan sekarang Ketua Techhive, mereka berdua mendirikan firma tersebut dengan visi awal untuk bersaing secara global di industri konsultasi TI dan memberdayakan talenta digital Indonesia.</p>
+
+        <p>Pada 2016, perusahaan resmi terdaftar sebagai PT.Techhive. Joseph Nuroho bergabung dengan Techhive sebagai direktur tahun berikutnya untuk memperkuat dewan direksi. Memulai dengan tim kecil yang terdiri dari 2 orang, Techhive kini telah berkembang menjadi tim dengan 60 talenta teknologi dan terus bertambah. Pada tahun 2024, Techhive meraih sertifikasi ISO 9001:2015 dan ISO 27001:2022, yang mencerminkan komitmen kami terhadap standar manajemen kualitas dan keamanan informasi.</p>
+    </main>
+
+    
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="partners-box mb-4">
+                <h3 class="partners-title mb-4">Mitra Kami</h3>
+                <div class="row align-items-center justify-content-start g-4">
+                    <div class="col-6 col-md-3">
+                        <img src="img/odoo.png" alt="Odoo" class="partner-logo" width="120" height="40">
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <img src="img/alibaba.webp" alt="Alibaba Cloud" class="partner-logo" width="120" height="40">
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <img src="img/rhino.webp" alt="Rhino" class="partner-logo" width="120" height="40">
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <img src="img/mekari (1).png" alt="Mekari" class="partner-logo" width="120" height="40">
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-box">
+                <p class="stats-subtitle">Kami adalah agensi digital terdepan</p>
+                <div class="row text-center g-3">
+                    <div class="col-4">
+                        <div class="stat-item">
+                            <h4 class="stat-number">100+</h4>
+                            <p class="stat-label">Talenta Teknologi</p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="stat-item">
+                            <h4 class="stat-number">500+</h4>
+                            <p class="stat-label">Projek Klien</p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="stat-item">
+                            <h4 class="stat-number">9+</h4>
+                            <p class="stat-label">Negara yang Didukung</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Values Section -->
+    <section class="values-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">SIAPA KAMI, APA YANG KAMI CITA - CITAKAN !</h2>
+            
+            <div class="row g-4">
+                <!-- P - Partnership Mindset -->
+                <div class="col-md-4">
+                    <div class="value-card h-100">
+                        <h3 class="value-letter">P</h3>
+                        <h4 class="value-title">Partnership Mindset</h4>
+                        <p class="value-text">Setiap anggota tim adalah mitra dan bersama-sama kita semua tim kemitraan. Jadi dapat berkembang, kedua belah pihak harus bertanggung jawab mereka, saling menghormati, dan bekerja sama untuk timbal balik.</p>
+                    </div>
+                </div>
+
+                <!-- E - Exceptional -->
+                <div class="col-md-4">
+                    <div class="value-card h-100">
+                        <h3 class="value-letter">E</h3>
+                        <h4 class="value-title">Exceptional</h4>
+                        <p class="value-text">Kami menyejesaikan tugas. Kami mencapai tujuan tim & perusahaan kami. Kami fokus pada hasil, bukan aktivitas.</p>
+                    </div>
+                </div>
+
+                <!-- A - All About People -->
+                <div class="col-md-4">
+                    <div class="value-card h-100">
+                        <h3 class="value-letter">A</h3>
+                        <h4 class="value-title">All About People</h4>
+                        <p class="value-text">Kami memperlakukan semua orang dengan hormat tanpa memandang status atau posisi.</p>
+                    </div>
+                </div>
+
+                <!-- C - Collaborative -->
+                <div class="col-md-6">
+                    <div class="value-card h-100">
+                        <h3 class="value-letter">C</h3>
+                        <h4 class="value-title">Collaborative</h4>
+                        <p class="value-text">Untuk mencapai hasil, anggota tim harus bekerja sama dengan efektif. Di Nurtureh, membantu orang lain adalah prioritas. Demikian pula, Anda dapat mengandalkan orang lain untuk bantuan dan hasilnya. Bahkan, Anda diharapkan untuk melakukannya.</p>
+                    </div>
+                </div>
+
+                <!-- E - Ever-growing -->
+                <div class="col-md-6">
+                    <div class="value-card h-100">
+                        <h3 class="value-letter">E</h3>
+                        <h4 class="value-title">Ever-growing</h4>
+                        <p class="value-text">Kami tidak pernah berhenti belajar dan berinivasi. Kami tidak menghindari tantangan. Kegagalan adalah kesempatan untuk tumbuh.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Management Section -->
+    <section class="team-section py-5 mb-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h4 class="team-subtitle mb-2">Tim Manajemen</h4>
+                <h2 class="team-title">Temui tim eksekutif di balik Techhive</h2>
+            </div>
+            
+            <div class="row justify-content-center">
+                <!-- Team Member 1 -->
+                <div class="col-md-4 text-center mb-4">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="img/pa.png" alt="Nurcahya Pradana" class="rounded-circle" width="200" height="200">
+                        </div>
+                        <h3 class="member-name">Nurcahya Pradana</h3>
+                        <p class="member-position">Penasihat</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="col-md-4 text-center mb-4">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="img/teta.png" alt="Anggertha Nurrosyid" class="rounded-circle" width="200" height="200">
+                        </div>
+                        <h3 class="member-name">Anggertha Nurrosyid</h3>
+                        <p class="member-position">Co - Founder</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="col-md-4 text-center mb-4">
+                    <div class="team-member">
+                        <div class="member-image">
+                            <img src="img/bila.png" alt="Nabila Oktaviani" class="rounded-circle" width="200" height="200">
+                        </div>
+                        <h3 class="member-name">Nabila Oktaviani</h3>
+                        <p class="member-position">Co - Founder</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Trusted Companies Section -->
+    <section class="trusted-companies-section py-5 mb-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-lg-6">
+                    <h2 class="trusted-title">Dipercaya oleh lebih dari 50 perusahaan terkemuka di seluruh dunia</h2>
+                    <a href="kontak.html"><button class="btn btn-primary btn-portfolio mt-3">
+                        Periksa Portofolio Kami
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right ms-2" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                        </svg>
+                    </button></a>
+                </div>
+            </div>
+            
+            <div class="trusted-logos">
+                <div class="row row-cols-2 row-cols-md-4 g-4 align-items-center">
+                    <div class="col">
+                        <img src="img/senwell.png" alt="Senwell" class="img-fluid" width="150" height="50">
+                    </div>
+                    <div class="col">
+                        <img src="img/moneyspace.png" alt="Money Space" class="img-fluid" width="150" height="50">
+                    </div>
+                    <div class="col">
+                        <img src="img/Leap.png" alt="Leap" class="img-fluid" width="150" height="50">
+                    </div>
+                    <div class="col">
+                        <img src="img/idl.png" alt="IDP Logistics" class="img-fluid" width="150" height="50">
+                    </div>
+                    <div class="col">
+                        <img src="img/kagome.png" alt="Kagome" class="img-fluid" width="150" height="50">
+                    </div>
+                    <div class="col">
+                        <img src="img/easymart.png" alt="Easy Mart" class="img-fluid" width="150" height="50">
+                    </div>
+                    <div class="col">
+                        <img src="img/realfood.png" alt="Real Food" class="img-fluid" width="150" height="50">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-md-8">
+                    <h2 class="text-dark mb-3">Percakapan yang Baik Membawa pada Mitra yang Berkembang.</h2>
+                    <p class="text-dark mb-0">Mari Berbicara dan Memulai</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <a href="kontak.html" class="btn btn-cta btn-lg">Mulai Sekarang!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <p class="text-white mb-1">Jl. Margorejo Indah XV/C-814</p>
+                    <p class="text-white mb-1">Surabaya, Jawa Timur, 60238</p>
+                    <p class="text-white mb-1">+62 811-3057-1746 (WhatsApp)</p>
+                    <a href="/cdn-cgi/l/email-protection#a1d2c0cdc4d2e1cfd4d3ced2cec7d58fc8c5" class="text-yellow text-decoration-none"><span class="__cf_email__" data-cfemail="1261737e7761527c67607d617d74663c7b76">[email&#160;protected]</span></a>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-6 mb-4 mb-md-0">
+                            <h5 class="text-white mb-3">Beranda</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="produk2.html" class="text-white text-decoration-none">IT Outsourcing</a></li>
+                                <li><a href="portofolio.html" class="text-white text-decoration-none">Portofolio</a></li>
+                                <li><a href="produk1.html" class="text-white text-decoration-none">Development</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <h5 class="text-white mb-3">Informasi</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="text-white text-decoration-none">Kontak</a></li>
+                                <li><a href="index.html" class="text-white text-decoration-none">Tentang</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-white-50">
+                        Kebanyakan bisnis kekurangan waktu dan keahlian untuk membangun perangkat lunak yang andal. Di Techhive kami akan membangun perangkat lunak kelas dunia dengan tarif terjangkau sehingga Anda dapat fokus pada mengembangkan bisnis Anda.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
